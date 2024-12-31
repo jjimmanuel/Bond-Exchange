@@ -1,1 +1,19 @@
+class Notification:
+  def __init__(self, user_id, cusip):
+    self.cusip = cusip
+    self.user_id = user_id
 
+class MatchNotifications:
+  def __init__(self, db):
+    self.db = db
+    self.notifications = []
+
+  def create_notification(self, user_id, cusip):
+    notification = Notification(user_id, cusip)
+    db.update_notifications(user_id=user_id, cusip=cusip)
+    self.notifications.append((notification.user_id, notification.cusip))
+
+  def check_notification(self, user_id, cusip):
+    results = db.check_ns(user_id=user_id, cusip=cusip)
+    if (user_id, cusip) in results:
+      return "A notifitcation exists for this cusip"
