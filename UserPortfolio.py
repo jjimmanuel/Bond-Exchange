@@ -21,3 +21,6 @@ class UserPortfolio:
 
   def has_sufficient_cash(self, price, par, cash):
     return cash >= par * (price/100)
+
+
+#Git push test
