@@ -42,7 +42,15 @@ public class FlexibleNotificationSystem {
         alertSystem.notifyUser("SMS notification example 1");
         alertSystem.notifyUser("SMS notification example 2");
 
-        // 3. Display the session log (Using Collection Framework)
+        // 3. Switch to WhatsApp service
+        NotificationMedium whatsapp = new WhatsAppService(); 
+        alertSystem.setMedium(whatsapp);
+
+        // Send whatsapp alerts
+        alertSystem.notifyUser("WhatsApp notification example 1");
+        alertSystem.notifyUser("WhatsApp notification example 2");
+
+        // 4. Display the session log (Using Collection Framework)
         System.out.println("\n--- Session Message Log ---");
         List<String> log = alertSystem.getMessageLog();
         for (int i = 0; i < log.size(); i++) {
